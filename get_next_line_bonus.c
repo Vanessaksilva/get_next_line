@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 15:44:39 by coder             #+#    #+#             */
-/*   Updated: 2022/05/26 01:10:07 by coder            ###   ########.fr       */
+/*   Created: 2022/05/24 16:22:55 by coder             #+#    #+#             */
+/*   Updated: 2022/05/26 01:04:14 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {
@@ -100,15 +100,35 @@ static char	*read_file(int fd, char *s)
 
 char	*get_next_line(int fd)
 {
-	static char	*s;
+	static char	*s[OPEN_MAX];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1 || fd > OPEN_MAX)
 		return (NULL);
-	s = read_file(fd, s);
-	if (!s)
+	s[fd] = read_file(fd, s[fd]);
+	if (!s[fd])
 		return (NULL);
-	line = get_line(s);
-	s = get_to_next(s);
+	line = get_line(s[fd]);
+	s[fd] = get_to_next(s[fd]);
 	return (line);
 }
+
+//MAIN
+/* #include <fcntl.h>
+#include <stdio.h>
+int	main(void)
+{
+	int		fd;
+	char	*line;
+
+	fd = open("test0.txt", O_RDONLY);
+	while (1)
+	{
+		line = get_next_line(fd);
+		printf("%s", line);
+		if (line == NULL)
+			break ;
+		free(line);
+	}
+	return (0);
+}  */

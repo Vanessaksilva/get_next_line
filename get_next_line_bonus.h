@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/08 16:20:53 by coder             #+#    #+#             */
-/*   Updated: 2022/05/26 00:56:11 by coder            ###   ########.fr       */
+/*   Created: 2022/05/24 16:26:24 by coder             #+#    #+#             */
+/*   Updated: 2022/05/26 01:05:11 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+
+# define OPEN_MAX 257
+
 # include <stdlib.h>
 # include <unistd.h>
 
